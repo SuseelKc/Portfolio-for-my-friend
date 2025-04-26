@@ -39,7 +39,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::post('/settings', [AdminController::class, 'updateSettings'])->name('settings.update');
     
     // Project Management Routes
-    Route::resource('projects', ProjectsController::class);
+    Route::resource('projects', \App\Http\Controllers\Admin\ProjectController::class);
     
     // Skills Management Routes
     Route::get('/skills', [AdminController::class, 'skills'])->name('skills');

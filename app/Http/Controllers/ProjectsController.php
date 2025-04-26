@@ -17,4 +17,16 @@ class ProjectsController extends Controller
         
         return view('portfolio.projects', compact('settings', 'projects', 'softSkills', 'languages'));
     }
+
+    public function add(){
+
+    }
+
+    public function store(){
+
+    }
+
+    public function delete(){
+        
+    }
 } 
