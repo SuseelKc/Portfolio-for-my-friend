@@ -1,56 +1,33 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('title', 'Edit Project - Admin Panel')
+@section('title', 'Projects - Admin Panel')
+
+@section('header', 'Edit Projects')
+
+@section('header-actions')
+<a href="{{ route('admin.projects.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-200">
+    <i class="fas fa-arrow-left mr-2"></i>Back to Projects
+</a>
+@endsection
 
 @section('content')
 <div class="min-h-screen bg-gray-100">
-    <!-- Sidebar -->
-    <div class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white">
-        <div class="flex items-center justify-center h-16 bg-gray-900">
-            <h1 class="text-xl font-bold">Admin Panel</h1>
-        </div>
-        <nav class="mt-5">
-            <a href="{{ route('admin.dashboard') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700">
-                <i class="fas fa-tachometer-alt mr-3"></i>
-                Dashboard
-            </a>
-            <a href="{{ route('admin.settings') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700">
-                <i class="fas fa-cog mr-3"></i>
-                Settings
-            </a>
-            <a href="{{ route('admin.projects.index') }}" class="flex items-center px-4 py-2 bg-gray-700 text-white">
-                <i class="fas fa-project-diagram mr-3"></i>
-                Projects
-            </a>
-            <a href="{{ route('admin.skills') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700">
-                <i class="fas fa-tools mr-3"></i>
-                Skills
-            </a>
-            <form method="POST" action="{{ route('logout') }}" class="mt-4">
-                @csrf
-                <button type="submit" class="flex items-center w-full px-4 py-2 text-gray-300 hover:bg-gray-700">
-                    <i class="fas fa-sign-out-alt mr-3"></i>
-                    Logout
-                </button>
-            </form>
-        </nav>
-    </div>
 
     <!-- Main Content -->
-    <div class="ml-64">
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+
+     
+            {{-- <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center">
                     <h1 class="text-3xl font-bold text-gray-900">Edit Project</h1>
                     <a href="{{ route('admin.projects.index') }}" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 transition-colors duration-200">
                         <i class="fas fa-arrow-left mr-2"></i>Back to Projects
                     </a>
                 </div>
-            </div>
-        </header>
+            </div> --}}
 
-        <main>
-            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+
+   
+         
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <form action="{{ route('admin.projects.update', $project) }}" method="POST" enctype="multipart/form-data" class="space-y-6 p-6">
                         @csrf
@@ -117,8 +94,8 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </main>
-    </div>
+           
+ 
+
 </div>
 @endsection 

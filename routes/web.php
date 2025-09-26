@@ -7,7 +7,7 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::post('/settings', [AdminController::class, 'updateSettings'])->name('settings.update');
     
     // Project Management Routes
-    Route::resource('projects', \App\Http\Controllers\Admin\ProjectController::class);
+    Route::resource('projects', ProjectController::class);
     
     // Skills Management Routes
     Route::get('/skills', [AdminController::class, 'skills'])->name('skills');
