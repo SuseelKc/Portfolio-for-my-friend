@@ -1,11 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProjectController;
 
@@ -45,4 +46,12 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/skills', [AdminController::class, 'skills'])->name('skills');
     Route::post('/skills', [AdminController::class, 'storeSkill'])->name('skills.store');
     Route::delete('/skills/{skill}', [AdminController::class, 'deleteSkill'])->name('skills.delete');
+});
+
+
+Route::get('/ping', fn () => 'ok');                    // proves Laravel boots
+Route::get('/key-check', fn () => config('app.key') ? 'key:ok' : 'key:missing');
+Route::get('/db-check', function () {
+    try { DB::select('select 1'); return 'db:ok'; }
+    catch (\Throwable $e) { return response('db:fail: '.$e->getMessage(), 500); }
 });
